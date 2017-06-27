@@ -41,12 +41,12 @@ local lines_repl = "line_alp.dds"
 
 local snow_types = {
     light = {
-        [0] = "snow-light-day\\",
-        [1] = "snow-light-night\\",
+        [0] = "snow-light-day",
+        [1] = "snow-light-night",
     },
     heavy = {
-        [0] = "snow-heavy-day\\",
-        [1] = "snow-heavy-night\\",
+        [0] = "snow-heavy-day",
+        [1] = "snow-heavy-night",
     },
 }
 
@@ -56,7 +56,7 @@ function read_ini(ctx)
     end
     local t = {}
     for line in io.lines(inifile) do
-        local name, value = string.match(line, "^([%w_]+)%s*=%s*([-%d.]+)")
+        local name, value = string.match(line, "^([-%w_.]+)%s*=%s*([-%d.]+)")
         if name and value then
             t[name] = tonumber(value) or value
             log(string.format("%s: %s", name, t[name]))
@@ -76,12 +76,12 @@ function make_key(ctx, filename)
         end
         for pattern,repl in pairs(pitch_files) do
             if string.match(filename, pattern) then
-                return snow .. repl
+                return string.format("%s\\%s", snow, repl)
             end
         end
         if no_lines == 1 then
             if string.match(filename, lines_pattern) then
-                return snow .. lines_repl
+                return string.format("%s\\%s", snow, lines_repl)
             end
         end
         return filename
@@ -109,6 +109,7 @@ function after_set_conditions(ctx)
     use_orange_ball = nil
     if ctx.season == 1 and ctx.weather == 1 then
         -- it is winter and bad weather, so choose randomly: snow or rain
+        log("======[ WINTER/RAIN ]======")
         local n = math.random()
         if n >= (1 - ini.chance_of_snow) then
             -- it is snow. Now decide: light or heavy
@@ -121,7 +122,7 @@ function after_set_conditions(ctx)
             no_lines = ini[snow .. ".no_lines"]
             use_orange_ball = ini[snow .. ".no_lines"]
             log(string.format("snow: %s (n=%0.3f, m=%0.3f)", snow, n, m))
-            log(string.format("snow settings: no_lines:%s, use_range_ball:%s", no_lines, use_orange_ball))
+            log(string.format("snow settings: no_lines:%s, use_orange_ball:%s", no_lines, use_orange_ball))
         else
             log(string.format("no snow, just rain. (n=%0.3f)", n))
         end

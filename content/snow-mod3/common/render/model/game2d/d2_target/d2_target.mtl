@@ -1,0 +1,12 @@
+<materialset>
+	<material name="lambert2" shader="Constant">
+   	    <state name="ztest" value="1" />
+        <state name="zwrite" value="1" />
+        <state name="twosided" value="1" />
+        <state name="alphatest" value="1" />
+        <state name="alpharef" value="0" />
+        <state name="alphablend" value="1" />
+        <state name="blendmode" value="0" />
+		<sampler name="DiffuseMap" path="./d2_target_alp_nomip.dds" srgb="1" minfilter="linear" magfilter="linear" />
+	</material>
+</materialset>

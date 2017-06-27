@@ -1,0 +1,5 @@
+Makefile text eol=crlf
+*.txt text eol=crlf
+*.ini text eol=crlf
+*.lua text eol=crlf
+*.md text eol=crlf

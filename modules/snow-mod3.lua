@@ -1,5 +1,5 @@
 --[[
-Snow/Rain switcher, version 3.1
+Snow/Rain switcher, version 3.2
 idea and content: Ethan2, kilay, Wolves85
 artwork: Wolves85, -cRoNoS-
 module by: juce
@@ -120,7 +120,7 @@ function after_set_conditions(ctx)
                 snow = snow_types.light[ctx.timeofday] or ""
             end
             no_lines = ini[snow .. ".no_lines"]
-            use_orange_ball = ini[snow .. ".no_lines"]
+            use_orange_ball = ini[snow .. ".use_orange_ball"]
             log(string.format("snow: %s (n=%0.3f, m=%0.3f)", snow, n, m))
             log(string.format("snow settings: no_lines:%s, use_orange_ball:%s", no_lines, use_orange_ball))
         else

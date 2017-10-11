@@ -1,5 +1,5 @@
 --[[
-Snow/Rain switcher, version 3.2
+Snow/Rain switcher, version 3.4
 idea and content: Ethan2, kilay, Wolves85
 artwork: Wolves85, -cRoNoS-
 module by: juce
@@ -28,7 +28,7 @@ local pitch_files = {
     ["\\ground_c.*%.dds"] = "ground_c.dds",
     ["\\pitch_nrm.*%.dds"] = "pitch_nrm.dds",
     ["\\weather_lbm.*%.dds"] = "weather_lbm.dds",
-    ["\\turnflen.*%.dds"] = "weather_lbm.dds",
+    ["\\turflen.*%.dds"] = "weather_lbm.dds",
     ["\\pitch_bsm.*%.dds"] = "pitch_bsm.dds",
     ["\\tex_rain_particle_00.dds"] = "tex_snow_particle_00.dds",
     ["\\tex_rain_screen_00.dds"] = "tex_snow_screen_00.dds",
